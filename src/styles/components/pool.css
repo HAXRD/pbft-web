@@ -1,0 +1,16 @@
+.table {
+    width: 100%;
+    border-radius: 6px;
+    padding: 0.5em 1em;
+    text-align: center;
+}
+
+.table-head {
+    background-color: darkgrey;
+    color: white;
+}
+
+.table-body {
+    background-color: white;
+    color: black;
+}

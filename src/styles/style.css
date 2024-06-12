@@ -1,0 +1,55 @@
+/*@tailwind base;*/
+/*@tailwind components;*/
+@tailwind utilities;
+
+:root {
+    --clr-dark: #070a13;
+    --clr-light: #f1f5f9;
+    --clr-slate400: #94a3b8;
+    --clr-slate600: #475569;
+    --clr-slate800: #1e293b;
+    --clr-light-red: #f87171;
+    --clr-green: #16a34a;
+    --clr-yellow: #fde047;
+    --clr-violet: #7c3aed;
+}
+
+body {
+    background-color: var(--clr-light);
+    color: var(--clr-slate800);
+    font-size: 0.75rem;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: var(--clr-dark);
+        color: var(--clr-slate800);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: var(--clr-light);
+        color: var(--clr-slate800);
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+button {
+    display: inline-block;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: inherit;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}

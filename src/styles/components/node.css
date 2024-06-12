@@ -1,0 +1,65 @@
+
+.node-container {
+    overflow: auto;
+    height: 60vh;
+}
+
+
+.node-block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0 0.5rem;
+}
+
+.blockchain-block {
+    display: flex;
+    flex-direction: row;
+}
+
+.ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+.socket-ul {
+    gap: 0.5rem;
+}
+
+.socket-li {
+    padding: 0.5em 1em;
+    background-color: var(--clr-light);
+    border-radius: 6px;
+}
+
+.blockchain-ul {
+    gap: 0;
+}
+
+.blockchain-li {
+    padding: 0.5em 1em;
+    background-color: var(--clr-light);
+    border-radius: 6px;
+}
+
+.grid-block-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0.5rem;
+    height: 100%;
+    width: 100%;
+}
+
+.grid-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-radius: 6px;
+    padding: 0.5em 1em;
+}
+
+.item1 {
+    grid-row: 1 / span 2;
+}
