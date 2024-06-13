@@ -1,20 +1,35 @@
 "use client";
 import {useEffect, useState} from "react";
-import {Data} from "@/app/data/data";
+import {Data, dataSrcs} from "@/app/data/data";
 import Node from "@/app/components/node";
 import axios from "axios";
+import MakeTxBtn from "@/app/components/make_tx_btn";
 
 export default function Home() {
     const [data, setData] = useState<Data[]>([]);
+    const [disableResetBtn, setDisableResetBtn] = useState(false);
     const fetchData = async () => {
         try {
-            const response1 = await axios.get<Data>("http://localhost:18080/queryNodeInfo2");
-            const response2 = await axios.get<Data>("http://localhost:18081/queryNodeInfo2");
-            const response3 = await axios.get<Data>("http://localhost:18082/queryNodeInfo2");
-            setData([response1.data, response2.data, response3.data]);
+            let newData = [];
+            for (let i = 0; i < dataSrcs.length; i++) {
+                const response = await axios.get<Data>(`${dataSrcs[i]}/queryNodeInfo2`);
+                newData.push(response.data);
+            }
+            setData(newData);
+            getResetBtnStatus(newData)
         } catch (error) {
             console.error('Error fetching data: ', error);
         }
+    }
+
+    const getResetBtnStatus = (data: Data[]) => {
+        for (let i = 0; i < data.length; i++) {
+            if (data[i].txPool.inProgress.length > 0) {
+                setDisableResetBtn(true)
+                return
+            }
+        }
+        setDisableResetBtn(false)
     }
 
     useEffect(() => {
@@ -23,20 +38,43 @@ export default function Home() {
         return () => clearInterval(interval)
     }, []);
 
+    const handleReset = async () => {
+        try {
+            let result = [];
+            for (let i = 0; i < dataSrcs.length; i++) {
+                const response = await axios.get<Data>(`${dataSrcs[i]}/reset`);
+                result.push(response.data);
+            }
+            // console.log(result)
+        } catch (error) {
+            console.error('Error resetting: ', error);
+        }
+    }
+    // console.log(data)
 
     return (
         <main>
             <div className="container">
-                <div>
-                    <button className="btn bg-red-400">
+                <div className="node-block">
+                    <button className="btn bg-red-400"
+                            onClick={handleReset}
+                            disabled={disableResetBtn}>
                         Reset
                     </button>
+                    {
+                        data.map(item => (
+                            <MakeTxBtn key={item.nodeHash}
+                                       address={item.nodeAddress}
+                                       hash={item.nodeHash}/>
+                        ))
+                    }
                 </div>
+
             </div>
 
             {
-                data.map(dataItem => (
-                    <Node key={dataItem.nodeHash} data={dataItem}/>
+                data.map(item => (
+                    <Node key={item.nodeHash} data={item}/>
                 ))
             }
         </main>

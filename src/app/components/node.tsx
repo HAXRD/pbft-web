@@ -25,7 +25,6 @@ export default function Node({data}: { data: Data }) {
         }
 
         const interleavedBC = [];
-        console.log(bc.length);
         for (let i = 0; i < bc.length; i++) {
             interleavedBC.push(bc[i]);
             if (i < bc.length - 1) {
@@ -42,11 +41,11 @@ export default function Node({data}: { data: Data }) {
     return (
         <div className="container node-container">
             <div className="node-block">
-                <label className="btn" style={style}>
+                <label className="label" style={style}>
                     Node [{data.nodeHash}]
                 </label>
                 <div className="blockchain-block">
-                    <label className="btn" style={style}>
+                    <label className="label" style={style}>
                         Blockchain
                     </label>
                     <ul className="ul blockchain-ul">
@@ -55,7 +54,7 @@ export default function Node({data}: { data: Data }) {
                 </div>
             </div>
             <div className="node-block">
-                <label className="btn" style={style}>
+                <label className="label" style={style}>
                     Connected Sockets
                 </label>
                 <div>

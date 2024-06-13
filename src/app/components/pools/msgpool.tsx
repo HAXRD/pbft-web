@@ -28,6 +28,7 @@ function SubPool({blockHash, fromWhos}: { blockHash: string, fromWhos: Array<str
                 <th>Wallet PubKey</th>
             </tr>
             </thead>
+            <tbody>
             {
                 fromWhos.toSorted(
                     (a, b) => (
@@ -42,7 +43,7 @@ function SubPool({blockHash, fromWhos}: { blockHash: string, fromWhos: Array<str
                         }
                         <td>{index}</td>
                         <td>
-                            <div className="btn" style={{
+                            <div className="label" style={{
                                 backgroundColor: convertToColor(fromWho),
                                 color: getTextColor(fromWho)
                             }}>
@@ -52,6 +53,7 @@ function SubPool({blockHash, fromWhos}: { blockHash: string, fromWhos: Array<str
                     </tr>
                 ))
             }
+            </tbody>
         </table>
     )
 }

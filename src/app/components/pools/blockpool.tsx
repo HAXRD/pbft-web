@@ -7,13 +7,17 @@ export default function Blockpool({blockPool}: { blockPool: Array<BlockPoolItem>
             <div>Block Pool</div>
 
             <table className="table">
-                <thead className="table-head">
-                <tr>
-                    <th>Index</th>
-                    <th>Block Hash</th>
-                    <th>Wallet PubKey</th>
-                </tr>
-                </thead>
+                {
+                    blockPool.length > 0 && (
+                        <thead className="table-head">
+                        <tr>
+                            <th>Index</th>
+                            <th>Block Hash</th>
+                            <th>Wallet PubKey</th>
+                        </tr>
+                        </thead>
+                    )
+                }
                 {
                     blockPool.toSorted(
                         (a, b) => (
@@ -25,7 +29,7 @@ export default function Blockpool({blockPool}: { blockPool: Array<BlockPoolItem>
                             <td>{index}</td>
                             <td>{blockPoolItem.blockHash}</td>
                             <td>
-                                <div className="btn" style={{
+                                <div className="label" style={{
                                     backgroundColor: convertToColor(blockPoolItem.pubKey),
                                     color: getTextColor(blockPoolItem.pubKey)
                                 }}>
