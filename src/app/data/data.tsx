@@ -5,7 +5,6 @@ export interface Block {
 }
 
 export interface TxPoolItem {
-    index: number,
     hash: string,
     pubKey: string,
 }
@@ -17,19 +16,13 @@ export interface TxPoolInfo {
 }
 
 export interface BlockPoolItem {
-    index: number,
     blockHash: string,
-    pubKey: string,
-}
-
-export interface FromWho {
-    index: number,
     pubKey: string,
 }
 
 export interface MsgPoolItem {
     blockHash: string,
-    fromWhos: Array<FromWho>,
+    fromWhos: Array<string>,
 }
 
 export interface Data {

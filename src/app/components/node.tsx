@@ -61,7 +61,11 @@ export default function Node({data}: { data: Data }) {
                 <div>
                     <ul className="ul socket-ul">
                         {
-                            data.sockets.toSorted().map((socket, index) => (
+                            data.sockets.toSorted(
+                                (a, b) => (
+                                    a > b ? 1 : -1
+                                )
+                            ).map((socket, index) => (
                                 <li key={index} className="socket-li">{socket}</li>
                             ))
                         }

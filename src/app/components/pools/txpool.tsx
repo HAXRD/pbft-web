@@ -28,10 +28,14 @@ function SubPool({poolType, subPool}: { poolType: string; subPool: Array<TxPoolI
                 </tr>
                 </thead>
                 {
-                    subPool.toSorted().map((txPoolItem) => (
+                    subPool.toSorted(
+                        (a, b) => (
+                            a.hash > b.hash ? 1 : -1
+                        )
+                    ).map((txPoolItem, index) => (
                         <tbody key={txPoolItem.hash} className="table-body">
                         <tr>
-                            <td>{txPoolItem.index}</td>
+                            <td>{index}</td>
                             <td>{txPoolItem.hash}</td>
                             <td>
                                 <div className="btn" style={{
