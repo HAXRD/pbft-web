@@ -1,7 +1,7 @@
 import {BlockPoolItem} from "@/app/data/data";
 import {convertToColor, getTextColor} from "@/app/components/utils";
 
-export default function Blockpool({blockPool}:{blockPool:Array<BlockPoolItem>}) {
+export default function Blockpool({blockPool}: { blockPool: Array<BlockPoolItem> }) {
     return (
         <>
             <div>Block Pool</div>
@@ -15,10 +15,14 @@ export default function Blockpool({blockPool}:{blockPool:Array<BlockPoolItem>}) 
                 </tr>
                 </thead>
                 {
-                    blockPool.toSorted().map((blockPoolItem) => (
+                    blockPool.toSorted(
+                        (a, b) => (
+                            a.blockHash > b.blockHash ? 1 : -1
+                        )
+                    ).map((blockPoolItem, index) => (
                         <tbody key={blockPoolItem.blockHash} className="table-body">
                         <tr>
-                            <td>{blockPoolItem.index}</td>
+                            <td>{index}</td>
                             <td>{blockPoolItem.blockHash}</td>
                             <td>
                                 <div className="btn" style={{

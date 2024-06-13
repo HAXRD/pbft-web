@@ -1,4 +1,4 @@
-import {FromWho, MsgPoolItem} from "@/app/data/data";
+import {MsgPoolItem} from "@/app/data/data";
 import {convertToColor, getTextColor} from "@/app/components/utils";
 
 export default function MsgPool({poolType, pool}: { poolType: string, pool: Array<MsgPoolItem> }) {
@@ -6,7 +6,11 @@ export default function MsgPool({poolType, pool}: { poolType: string, pool: Arra
         <>
             <div>{poolType}</div>
             {
-                pool.toSorted().map(item => (
+                pool.toSorted(
+                    (a, b) => (
+                        a.blockHash > b.blockHash ? 1 : -1
+                    )
+                ).map(item => (
                     <SubPool key={item.blockHash} blockHash={item.blockHash} fromWhos={item.fromWhos}/>
                 ))
             }
@@ -14,7 +18,7 @@ export default function MsgPool({poolType, pool}: { poolType: string, pool: Arra
     )
 }
 
-function SubPool({blockHash, fromWhos}: { blockHash: string, fromWhos: Array<FromWho> }) {
+function SubPool({blockHash, fromWhos}: { blockHash: string, fromWhos: Array<string> }) {
     return (
         <table className="table">
             <thead className="table-head">
@@ -25,20 +29,24 @@ function SubPool({blockHash, fromWhos}: { blockHash: string, fromWhos: Array<Fro
             </tr>
             </thead>
             {
-                fromWhos.map((fromWho, index) => (
-                    <tr key={fromWho.pubKey} className="table-body">
+                fromWhos.toSorted(
+                    (a, b) => (
+                        a > b ? 1 : -1
+                    )
+                ).map((fromWho, index) => (
+                    <tr key={fromWho} className="table-body">
                         {
                             index == 0 && (
                                 <td rowSpan={fromWhos.length}>{blockHash}</td>
                             )
                         }
-                        <td>{fromWho.index}</td>
+                        <td>{index}</td>
                         <td>
                             <div className="btn" style={{
-                                backgroundColor: convertToColor(fromWho.pubKey),
-                                color: getTextColor(fromWho.pubKey)
+                                backgroundColor: convertToColor(fromWho),
+                                color: getTextColor(fromWho)
                             }}>
-                                {fromWho.pubKey}
+                                {fromWho}
                             </div>
                         </td>
                     </tr>
