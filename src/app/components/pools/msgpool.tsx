@@ -43,7 +43,7 @@ function SubPool({blockHash, fromWhos}: { blockHash: string, fromWhos: Array<str
                         }
                         <td>{index}</td>
                         <td>
-                            <div className="btn" style={{
+                            <div className="label" style={{
                                 backgroundColor: convertToColor(fromWho),
                                 color: getTextColor(fromWho)
                             }}>

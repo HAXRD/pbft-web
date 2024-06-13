@@ -29,7 +29,7 @@ export default function Blockpool({blockPool}: { blockPool: Array<BlockPoolItem>
                             <td>{index}</td>
                             <td>{blockPoolItem.blockHash}</td>
                             <td>
-                                <div className="btn" style={{
+                                <div className="label" style={{
                                     backgroundColor: convertToColor(blockPoolItem.pubKey),
                                     color: getTextColor(blockPoolItem.pubKey)
                                 }}>

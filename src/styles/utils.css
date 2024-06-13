@@ -11,7 +11,15 @@
     display: inline-block;
     text-decoration: none;
     padding: 0.5em 1em;
+    border: 3px solid white;
     border-radius: 6px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .btn:disabled {
@@ -19,3 +27,14 @@
     cursor: not-allowed;
 }
 
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.label {
+    display: inline-block;
+    text-decoration: none;
+    padding: 0.5em 1em;
+    border-radius: 6px;
+}

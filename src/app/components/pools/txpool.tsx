@@ -42,7 +42,7 @@ function SubPool({poolType, subPool}: { poolType: string; subPool: Array<TxPoolI
                             <td>{index}</td>
                             <td>{txPoolItem.hash}</td>
                             <td>
-                                <div className="btn" style={{
+                                <div className="label" style={{
                                     backgroundColor: convertToColor(txPoolItem.pubKey),
                                     color: getTextColor(txPoolItem.pubKey)
                                 }}>

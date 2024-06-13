@@ -1,4 +1,10 @@
 
+export const dataSrcs = [
+    "http://localhost:18080",
+    "http://localhost:18081",
+    "http://localhost:18082"
+]
+
 export interface Block {
     hash: string,
     proposer: string,
@@ -26,6 +32,7 @@ export interface MsgPoolItem {
 }
 
 export interface Data {
+    nodeAddress: string,
     nodeHash: string
     blockchain: Array<Block>,
     sockets: Array<string>,
