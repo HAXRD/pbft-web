@@ -17,16 +17,20 @@ function SubPool({poolType, subPool}: { poolType: string; subPool: Array<TxPoolI
     return (
         <>
             <table className="table">
-                <thead className="table-head">
-                <tr>
-                    <th colSpan="3">{poolType}</th>
-                </tr>
-                <tr>
-                    <th>Index</th>
-                    <th>Tx Hash</th>
-                    <th>Wallet PubKey</th>
-                </tr>
-                </thead>
+                {
+                    subPool.length >0 && (
+                        <thead className="table-head">
+                        <tr>
+                            <th colSpan="3">{poolType}</th>
+                        </tr>
+                        <tr>
+                            <th>Index</th>
+                            <th>Tx Hash</th>
+                            <th>Wallet PubKey</th>
+                        </tr>
+                        </thead>
+                    )
+                }
                 {
                     subPool.toSorted(
                         (a, b) => (

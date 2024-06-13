@@ -25,7 +25,6 @@ export default function Node({data}: { data: Data }) {
         }
 
         const interleavedBC = [];
-        console.log(bc.length);
         for (let i = 0; i < bc.length; i++) {
             interleavedBC.push(bc[i]);
             if (i < bc.length - 1) {

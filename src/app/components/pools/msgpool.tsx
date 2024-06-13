@@ -28,6 +28,7 @@ function SubPool({blockHash, fromWhos}: { blockHash: string, fromWhos: Array<str
                 <th>Wallet PubKey</th>
             </tr>
             </thead>
+            <tbody>
             {
                 fromWhos.toSorted(
                     (a, b) => (
@@ -52,6 +53,7 @@ function SubPool({blockHash, fromWhos}: { blockHash: string, fromWhos: Array<str
                     </tr>
                 ))
             }
+            </tbody>
         </table>
     )
 }
